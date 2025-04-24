@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from models.market_model import OptionContract
+from src.models.market_model import OptionContract
 from typing import Dict, Any, Optional
 from scipy.stats import norm
 from dataclasses import dataclass
@@ -20,8 +20,8 @@ class AnalysisService:
         
     def calculate_implied_volatility(self, strike: float, spot: float, time_to_expiry: float, is_call: bool) -> float:
         # Implementação do método de Newton-Raphson para calcular volatilidade implícita
-        target_price = spot  # Preço alvo (mercado)
-        vol = 0.5  # Estimativa inicial
+        target_price = min(spot * 0.2, abs(spot - strike))  # Preço alvo mais realista
+        vol = 0.3  # Estimativa inicial mais conservadora
         MAX_ITERATIONS = 100
         PRECISION = 0.00001
         
@@ -30,18 +30,16 @@ class AnalysisService:
             diff = target_price - price
             
             if abs(diff) < PRECISION:
-                return float(vol)
+                return min(vol, 2.0)  # Limita a volatilidade máxima
                 
             vega = self._calculate_vega(spot, strike, time_to_expiry, vol)
-            if vega == 0:
-                return float(vol)
+            if abs(vega) < PRECISION:
+                return min(vol, 2.0)
                 
-            vol = vol + diff / vega
+            vol = vol + diff / (vega + PRECISION)  # Evita divisão por zero
+            vol = max(0.01, min(vol, 2.0))  # Mantém a volatilidade em um range razoável
             
-            if vol <= 0:
-                return 0.0001
-                
-        return float(vol)
+        return min(vol, 2.0)
     
     def calculate_greeks(self, spot: float, strike: float, time_to_expiry: float, 
                         volatility: float, is_call: bool) -> Greeks:
