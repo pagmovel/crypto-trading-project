@@ -104,14 +104,19 @@ class App:
             
             if analysis_results:
                 logger.info("Gerando visualizações")
+                
+                # Gera o smile de volatilidade primeiro
                 self.visualization_service.plot_volatility_surface(options, analysis_results)
+                
+                # Gera os Greeks em seguida
                 self.visualization_service.plot_greeks_surface(options, analysis_results)
                 
+                # Por fim, gera o payoff da primeira opção
                 if options:
                     price_range = (options[0].strike_price * 0.5, options[0].strike_price * 1.5)
                     self.visualization_service.plot_option_payoff(options[0], price_range, analysis_results)
-            else:
-                logger.warning("Nenhum resultado de análise disponível para visualização")
+                    
+                logger.info("Visualizações geradas com sucesso")
                 
         except Exception as e:
             logger.error(f"Erro durante a execução: {e}", exc_info=True)
