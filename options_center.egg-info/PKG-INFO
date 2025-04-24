@@ -1,0 +1,87 @@
+Metadata-Version: 2.4
+Name: options-center
+Version: 0.1.0
+Summary: Uma plataforma para análise e trading de opções de criptomoedas
+Home-page: https://github.com/options-center/crypto-trading-project
+Author: Options Center Team
+Author-email: contact@optionscenter.com
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Office/Business :: Financial :: Investment
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: ccxt>=4.0.0
+Requires-Dist: numpy>=1.21.0
+Requires-Dist: pandas>=1.3.0
+Requires-Dist: scipy>=1.7.0
+Requires-Dist: plotly>=5.3.0
+Requires-Dist: python-dotenv>=0.19.0
+Requires-Dist: pytest>=6.2.5
+Requires-Dist: aiohttp>=3.8.0
+Requires-Dist: python-dateutil>=2.8.2
+Requires-Dist: dash>=2.0.0
+Requires-Dist: dash-bootstrap-components>=1.0.0
+Requires-Dist: fastapi>=0.68.0
+Requires-Dist: uvicorn>=0.15.0
+Requires-Dist: websockets>=10.0
+Requires-Dist: black>=22.0.0
+Requires-Dist: mypy>=0.910
+Requires-Dist: pytest-asyncio>=0.15.0
+Requires-Dist: pytest-cov>=2.12.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# crypto-trading-project
+
+Este projeto Ã© uma aplicaÃ§Ã£o de negociaÃ§Ã£o de criptomoedas que utiliza o mÃ³dulo CCXT para interagir com vÃ¡rias exchanges. O objetivo Ã© fornecer uma plataforma para anÃ¡lise de mercado e execuÃ§Ã£o de operaÃ§Ãµes de trading.
+
+## Estrutura do Projeto
+
+- `src/config/settings.ts`: ConfiguraÃ§Ãµes da aplicaÃ§Ã£o, incluindo chaves de API e variÃ¡veis de ambiente.
+- `src/services/ccxt.service.ts`: Classe `CcxtService` para interagir com a biblioteca CCXT, incluindo mÃ©todos para buscar dados de mercado e executar trades.
+- `src/services/analysis.service.ts`: Classe `AnalysisService` para analisar dados de mercado, calcular indicadores e gerar sinais de trading.
+- `src/services/trading.service.ts`: Classe `TradingService` que gerencia operaÃ§Ãµes de trading, incluindo colocaÃ§Ã£o de ordens e gerenciamento de posiÃ§Ãµes.
+- `src/models/market.model.ts`: Classe `Market` que representa um mercado de trading, com propriedades como `symbol`, `price` e `volume`.
+- `src/utils/indicators.ts`: FunÃ§Ãµes para calcular indicadores tÃ©cnicos usados na anÃ¡lise de trading, como mÃ©dias mÃ³veis e RSI.
+- `src/utils/helpers.ts`: FunÃ§Ãµes utilitÃ¡rias para tarefas comuns, como formataÃ§Ã£o de dados e logging.
+- `src/app.ts`: Ponto de entrada da aplicaÃ§Ã£o que inicializa os serviÃ§os e inicia a aplicaÃ§Ã£o.
+
+## Testes
+
+Os testes estÃ£o localizados na pasta `tests/services` e incluem:
+
+- `ccxt.test.ts`: Testes unitÃ¡rios para a classe `CcxtService`.
+- `analysis.test.ts`: Testes unitÃ¡rios para a classe `AnalysisService`.
+
+## InstalaÃ§Ã£o
+
+1. Clone o repositÃ³rio:
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+   cd crypto-trading-project
+   ```
+
+2. Instale as dependÃªncias:
+   ```bash
+   npm install
+   ```
+
+## Uso
+
+Para iniciar a aplicaÃ§Ã£o, execute:
+```bash
+npm start
+```
+
+## ContribuiÃ§Ã£o
+
+ContribuiÃ§Ãµes sÃ£o bem-vindas! Sinta-se Ã  vontade para abrir um pull request ou relatar problemas.

@@ -1,0 +1,21 @@
+{
+  "name": "crypto-trading-project",
+  "version": "1.0.0",
+  "description": "A project for cryptocurrency trading options using the CCXT library.",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "ts-node src/app.ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "ccxt": "^1.60.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.0",
+    "ts-node": "^10.0.0",
+    "jest": "^27.0.0",
+    "@types/jest": "^27.0.0"
+  },
+  "author": "Seu Nome",
+  "license": "MIT"
+}
